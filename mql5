@@ -1,0 +1,133 @@
+
+//+------------------------------------------------------------------+
+//|                                               Binary Deal Trading |
+//|                         Copyright © 2021, Forex Robot Easy Team  |
+//|                                              forexroboteasy.com |
+//+------------------------------------------------------------------+
+
+// Include necessary libraries
+#include <Trade\Trade.mqh>
+
+// Define constants
+#define SYMBOL_NAME 'EURUSD'
+#define TIME_FRAME 0 // M1
+#define EXPIRATION_TIME 900 // 15 minutes
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Set the indicator parameters
+   IndicatorSetInteger(INDICATOR_DIGITS, MarketInfo(Symbol(), MODE_DIGITS));
+   IndicatorSetString(INDICATOR_SHORTNAME, 'BinaryDeal');
+
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Perform any necessary cleanup
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   // Check for pre-signals
+   if(IsPreSignal())
+   {
+      // Perform pre-signal actions
+      PerformPreSignalActions();
+   }
+   
+   // Check for confirmed signals
+   if(IsConfirmedSignal())
+   {
+      // Perform confirmed signal actions
+      PerformConfirmedSignalActions();
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a pre-signal available                          |
+//+------------------------------------------------------------------+
+bool IsPreSignal()
+{
+   // Add your pre-signal logic here
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Perform pre-signal actions                                       |
+//+------------------------------------------------------------------+
+void PerformPreSignalActions()
+{
+   // Add your pre-signal actions here
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a confirmed signal available                    |
+//+------------------------------------------------------------------+
+bool IsConfirmedSignal()
+{
+   // Add your confirmed signal logic here
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Perform confirmed signal actions                                 |
+//+------------------------------------------------------------------+
+void PerformConfirmedSignalActions()
+{
+   // Add your confirmed signal actions here
+}
+
+//+------------------------------------------------------------------+
+//| Check if the expiration time has passed                          |
+//+------------------------------------------------------------------+
+bool HasExpired(const datetime signalTime)
+{
+   datetime currentTime = TimeCurrent();
+   return (currentTime - signalTime) > EXPIRATION_TIME;
+}
+
+//+------------------------------------------------------------------+
+//| Check if the current price is overbought                         |
+//+------------------------------------------------------------------+
+bool IsOverbought()
+{
+   // Add your overbought logic here
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Check if the current price is oversold                           |
+//+------------------------------------------------------------------+
+bool IsOversold()
+{
+   // Add your oversold logic here
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a reversal point available                      |
+//+------------------------------------------------------------------+
+bool IsReversalPoint()
+{
+   // Add your reversal point logic here
+   return false;
+}
+
+//+------------------------------------------------------------------+
+//| Check if there is a fractal point available                      |
+//+------------------------------------------------------------------+
+bool IsFractalPoint()
+{
+   // Add your fractal point logic here
+   return false;
+}
